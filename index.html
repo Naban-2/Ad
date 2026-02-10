@@ -1,1 +1,115 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Please Wait</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family: system-ui, Arial, sans-serif;
+  background:#e4e6eb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+.card{
+  background:#fff;
+  width:100%;
+  max-width:400px;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,.2);
+}
+.video video{
+  width:100%;
+  height:auto;
+}
+.content{
+  padding:12px;
+}
+.title{
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:4px;
+}
+.desc{
+  font-size:13px;
+  color:#555;
+}
+.timer{
+  margin-top:10px;
+  font-size:13px;
+  color:#666;
+}
+.skip{
+  margin-top:10px;
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#ccc;
+  color:#666;
+  font-size:16px;
+}
+.skip.active{
+  background:#1877f2;
+  color:#fff;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- VIDEO AD -->
+  <div class="video">
+    <video autoplay muted loop playsinline>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- TEXT LIKE AD -->
+  <div class="content">
+    <div class="title">Important Update Available</div>
+    <div class="desc">
+      Please review the details to continue safely.
+    </div>
+
+    <div class="timer">
+      Skip available in <span id="sec">5</span> seconds
+    </div>
+
+    <button id="skipBtn" class="skip" disabled>Skip</button>
+  </div>
+
+</div>
+
+<script>
+let s = 5;
+const sec = document.getElementById("sec");
+const btn = document.getElementById("skipBtn");
+
+const t = setInterval(()=>{
+  s--;
+  sec.textContent = s;
+  if(s === 0){
+    clearInterval(t);
+    btn.disabled = false;
+    btn.classList.add("active");
+    btn.textContent = "Continue";
+    btn.onclick = ()=>{
+      window.location.href = "https://paid-advertising-inquiry.vercel.app/";
+    }
+  }
+},1000);
+</script>
+
+</body>
+</html>
